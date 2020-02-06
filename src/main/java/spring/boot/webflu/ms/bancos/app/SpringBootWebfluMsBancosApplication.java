@@ -37,8 +37,8 @@ public class SpringBootWebfluMsBancosApplication implements CommandLineRunner{
 		mongoTemplate.dropCollection("bancos").subscribe();
 		
 		Flux.just(
-				new Banco("B001","20200000001", "BCP","CALLE BCP","99999991"),
-				new Banco("B002","20200000002", "BBVA","CALLE BBVA","99999992")
+				new Banco("bcp","20200000001", "BCP","CALLE BCP","99999991"),
+				new Banco("bbva","20200000002", "BBVA","CALLE BBVA","99999992")
 		).flatMap(banco -> bancoService.saveBanco(banco))
 			.subscribe(banco -> log.info("insert"+ banco.getCodigo_banco() + banco.getRazon_social()));
 		
